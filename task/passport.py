@@ -25,6 +25,10 @@ class ForeignPassport(Passport):
 
     def passport_info(self):
         return f"Passport Number: {self.pass_number}, Visas: {', '.join(self.visa_list)}"
+    def addVisa(self,newCountry):
+        self.visa_list.append(newCountry)
+    def removeVisa(self,oldCountry):
+        self.visa_list.remove(oldCountry)
 
     def __str__(self) -> str:
         return (
@@ -39,10 +43,11 @@ f1 = ForeignPassport(
     country="Ukraine",
     id="AB123456",
     pass_number=12345678,
-    visa_list=["Polan", "Germany", "Italy", "Japan"],
+    visa_list=["Poland", "Germany", "Italy", "Japan"],
 )
-
+f1.addVisa("France")
 print(f1)
+f1.removeVisa("Poland")
 print(f1.passport_info())
 
 
